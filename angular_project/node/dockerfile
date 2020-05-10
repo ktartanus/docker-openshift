@@ -1,0 +1,10 @@
+FROM node:10-alpine
+
+RUN npm install express-generator -g
+COPY /toh-pt6/dist /usr/app/dist
+COPY node/server.js /usr/app/
+COPY node/package.json /usr/app/
+
+WORKDIR /usr/app
+RUN npm install
+ENTRYPOINT [ "node", "server.js" ]

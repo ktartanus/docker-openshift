@@ -1,0 +1,10 @@
+FROM ubuntu
+
+# todo add dist folder with resource
+RUN apt-get update
+RUN apt-get install apache2 --assume-yes
+RUN apt-get install apache2-utils --assume-yes
+RUN apt-get clean 
+COPY /toh-pt6/dist/* /var/www/html/
+EXPOSE 80 
+CMD ["apache2ctl", "-D", "FOREGROUND"]
